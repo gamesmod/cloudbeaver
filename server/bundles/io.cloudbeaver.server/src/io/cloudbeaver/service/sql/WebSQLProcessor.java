@@ -501,13 +501,7 @@ public class WebSQLProcessor implements WebSessionProvider {
                     for (int i = 0; i < updateAttributes.length; i++) {
                         DBDAttributeBinding updateAttribute = updateAttributes[i];
                         Object value = updateValues.get(String.valueOf(updateAttribute.getOrdinalPosition()));
-                        Object realCellValue;
-                        if (value instanceof LinkedTreeMap) {
-                            LinkedTreeMap<String, Object> variables = (LinkedTreeMap<String, Object>) value;
-                            realCellValue = setCellRowValue(variables, webSession, session, updateAttribute, withoutExecution);
-                        } else {
-                            realCellValue = setCellRowValue(value, webSession, session, updateAttribute, withoutExecution);
-                        }
+                        Object realCellValue = setCellRowValue(value, webSession, session, updateAttribute, withoutExecution);
                         rowValues[i] = realCellValue;
                         finalRow[updateAttribute.getOrdinalPosition()] = realCellValue;
                     }
