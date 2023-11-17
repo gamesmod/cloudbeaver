@@ -71,7 +71,7 @@ export class AuthInfoService {
     options: ILoginOptions,
     { redirectLink, authId, authStatus }: AuthInfo,
   ): ITask<UserInfo | null> {
-    let window: Window | null = null;
+    //let window: Window | null = null;
     let id = providerId;
 
     if (options.configurationId) {
@@ -82,7 +82,11 @@ export class AuthInfoService {
       }
     }
 
-    if (redirectLink) {
+    if (window && redirectLink) {
+      window.open(redirectLink, '_blank');
+    }
+
+    /* if (redirectLink) {
       id = uuid();
       window = this.windowsService.open(id, {
         url: redirectLink,
@@ -94,7 +98,7 @@ export class AuthInfoService {
       if (window) {
         window.focus();
       }
-    }
+    } */
 
     return new AutoRunningTask(
       () => {
