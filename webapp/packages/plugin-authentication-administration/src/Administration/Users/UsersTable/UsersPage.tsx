@@ -43,7 +43,7 @@ export const UsersPage = observer<Props>(function UsersPage({ sub, param }) {
   const userManagementDisabled = administrationUsersManagementService.externalUserProviderEnabled;
 
   return styled(style)(
-    <ColoredContainer vertical wrap gap parent>
+    <ColoredContainer vertical wrap gap parent overflow>
       <Group box keepSize>
         <UsersAdministrationToolsPanel onUpdate={table.update} />
       </Group>
